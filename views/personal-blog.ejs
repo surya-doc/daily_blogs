@@ -1,0 +1,20 @@
+<%- include('partials/header') -%>
+            
+    <p class="person-name"><%= globalarr.personName %> </p>
+
+        <% console.log(globalarr.arr.length) %>
+        <% for(var j=0; j < globalarr.arr.length; j++) { %>
+            <div class="personalContainer">
+                <h1> <%= globalarr.arr[j].titleInfo %> </h1>
+                <p> <%= globalarr.arr[j].pageInfo %> </p>
+            </div>
+        <% } %>
+    
+
+
+
+<% if(globalarr.length >= 1){ %>
+    <form action="/delete" method="POST">
+        <button type="submit" class="dt">Delete</button>
+    </form>
+<% } %>
