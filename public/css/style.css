@@ -4,6 +4,7 @@ body{
     background-size: cover;
     background-position: 50% 50%;
     width: 100%;
+    min-height: 100vh;
     font-family: 'Lora', serif;
 }
 
@@ -91,7 +92,7 @@ body{
     text-shadow: 0 0 10px #FF5733;
 }
 
-
+/* login field */
 .login{
     height: 86vh;
     margin: 0 auto;
@@ -232,7 +233,8 @@ body{
 
 .about-body{
     color: #FFF;
-    height: 100vh;
+    position: relative;
+    padding-bottom: 50vh;
 }
 
 .about-div{
@@ -264,6 +266,7 @@ body{
     text-align: center;
     letter-spacing: 2px;
     margin-top: auto;
+    margin-bottom: auto;
 }
 
 .social-icon a{
@@ -279,18 +282,30 @@ body{
     padding: 0 20px 0 20px;
 }
 
-@media only screen and (max-width: 700px) {
-    .container-fluid{
-        display: block;
+@media only screen and (max-width: 500px) {
+    .login{
+        height: 86vh;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFF;
+        font-family: 'Dancing Script', cursive;
+        font-size: 30px;
     }
-
-    .navbar-brand{
-        display: block;
-        width: 100%;
+    
+    .login-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Courier New', Courier, monospace;
+        width: 90%;
     }
-
-    .mx-auto{
-        display: block;
-        width: 100%;
+    
+    .login-container input{
+        outline: none;
+        padding: 5px;
+        font-size: 20px;
+        width: 94%;
     }
 }

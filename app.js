@@ -104,7 +104,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/register', (req, res) => {
-    res.render("registration");
+    res.render("registration", {msg: ""});
 })
 
 app.post('/register', (req, res) => {
@@ -132,7 +132,7 @@ app.post('/register', (req, res) => {
 })
 
 app.get('/logto', (req, res) => {
-    res.render("person-home");
+    res.render("person-home", {logMsg: ""});
 })
 
 app.post('/logto', async (req, res) => {
@@ -143,16 +143,15 @@ app.post('/logto', async (req, res) => {
         temp_password = Password;
         user_name = name;
         temp_email = email;
-
-
-        Registration.findOne({Email: email, Password: Password}, async (error, regData) => {
+        Registration.findOne({Email: email}, async (error, regData) => {
             if(error){
                 console.log(error);
             } else {
                 if(!regData){
-                    res.redirect("/register");
+                    
+                    res.render("registration", {msg: "Could not find register first"});
                 } else {
-                    Item.findOne({Email: email, Password: Password}, async (error, match) => {
+                    Item.findOne({Email: email}, async (error, match) => {
                         if(error){
                             console.log(error);
                         }
@@ -167,8 +166,13 @@ app.post('/logto', async (req, res) => {
 
                             res.render("compose");
                         } else {
-                            console.log("Found!!");
-                            res.render("compose");
+                            if(Password === match.Password){   
+                                console.log("Found!!");
+                                res.render("compose");
+                            } else {
+                                console.log("Password did not match.");
+                                res.render('person-home', {logMsg: "Check your password!!"});
+                            }
                         }
                     })
                 }
