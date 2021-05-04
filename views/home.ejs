@@ -1,25 +1,37 @@
 <%- include('partials/header') -%>
 
-<a class="nav-link comp" href="/logto" style="color: #FFF;">+</a>
-<form class="d-flex search-option" action="/" method="POST">
-  <input class="form-control me-2" type="search" name="srch" placeholder="Search" aria-label="Search">
-  <button class="btn btn-outline-success" type="submit">Search</button>
-</form>
-    <% for(var i=(globalarr.length)-1; i >= 0; i--) { %>
-        <% for(var j=0; j < globalarr[i].arr.length; j++) { %>
-            <div class="personalContainer">
-                <% var l = globalarr[i].arr.link %>
-                <h1> <%= globalarr[i].arr[j].titleInfo %> </h1>
-                <p> <%= globalarr[i].arr[j].pageInfo %> </p>
-                <p class="name">by- <%= globalarr[i].personName %> </p>
-            </div>
-        <% } %>
-    
+<div class="post">
+  
+  <div class="time">
+    <h1>Today's Post</h1>
+    <marquee style="letter-spacing: 2px;">What are you waiting for?  Write your post today.</marquee>
+  </div>
+
+  <% if(globalarr.length > 50){ %>
+    <% for(var i=(globalarr.length)-1; i >= (globalarr.length)-20; i--) { %>
+          <div class="personalContainer">
+          <h1><%= globalarr[i].Content.Title %></h1>
+          <p>
+            <%= globalarr[i].Content.Post.substring(0, 10) + "..." %>
+            <a style="color: red;">Read more</a>
+          </p>
+          <p class="name">by- <%= globalarr[i].Name %> </p>
+          </div>
+
     <% } %>
+  <% } else { %>
+    <% for(var i=(globalarr.length)-1; i >= 0; i--) { %>
+          <div class="personalContainer">
+            <h1><%= globalarr[i].Content.Title %></h1>
+            <p>
+              <%= globalarr[i].Content.Post.substring(0, 200) + "..." %>
+              <a href="<%= '/person/' + globalarr[i].Content.Title %>" >Read more</a>
+            </p>              
+            <p class="name"> <span style="font-family: 'Dancing Script', cursive;">By-</span> <%= globalarr[i].Name %> </p>
+          </div>
+    <% } %>      
+  <% } %>
 
+</div>
 
-<% if(globalarr.length >= 1){ %>
-    <form action="/delete" method="POST">
-        <button type="submit" class="dt">Delete</button>
-    </form>
-<% } %>
+<%- include('partials/footer') -%>

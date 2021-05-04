@@ -1,0 +1,178 @@
+// mongoose.connect("mongodb://localhost:27017/bloguserdb", {
+//     useNewUrlParser:true,
+//     useUnifiedTopology:true,
+//     useCreateIndex:true
+// }).then(() => {
+//     console.log("Database successfull");
+// }).catch((e) => {
+//     console.log("No connection");
+// })
+
+// app.get('/', (req, res) => {
+//     res.send("Hellow!!");
+// })
+
+// const itemSchema = {
+//     id:
+// };
+
+// app.get('/', (req, res) => {
+//     console.log(globalArr);
+//     res.render('home', {globalarr: globalArr});
+// })
+
+// app.get('/about', (req, res) => {
+//     res.render('about', {ab: about});
+// })
+
+// app.get('/contact', (req, res) => {
+//     res.render('contact');
+// })
+
+
+// app.get('/compose', (req, res) => {
+//     res.render('compose');
+// })
+
+// app.post('/compose', (req, res) => {
+//     var globalObject = {
+//         personId: [],
+//         personName: "",
+//         arr: []
+//     }
+//     var post = {
+//         pageInfo: req.body.compose,
+//         titleInfo: req.body.title,
+//         link: _.lowerCase(req.body.title)
+//     }
+
+//     if(globalArr.length < 1){
+//         globalObject.personId.push(id);
+//         globalObject.personName = name;
+//         globalObject.arr.push(post);
+//         globalArr.push(globalObject);
+//     }
+//     else{
+//             var flag = 0;
+//             var pos = -1;
+//             var i = 0;
+//             for(; i < globalArr.length; i++){
+//                 if(id == globalArr[i].personId){
+//                     flag = 1;
+//                     pos = i;
+//                 }
+//             }
+//             if(flag === 1){
+//                 globalArr[pos].arr.push(post);
+//             }
+//             else{
+//                 globalObject.personId.push(id);
+//                 globalObject.personName = name;
+//                 globalObject.arr.push(post);
+//                 globalArr.push(globalObject);        
+//             }
+
+//     }
+
+//     res.redirect('/');
+// })
+
+// app.post('/delete', (req, res) => {
+//     var a = globalArr.length;
+//     var b = globalArr[a-1].arr.length;
+    
+//     globalArr[a-1].arr.splice(b-1, 1);
+//     if(b === 0){
+//         globalArr.splice(a-1,1);
+//     }
+//     res.redirect('/');
+// })
+
+// app.get('/users/:postName', function (req, res) {
+//     const requestTitle = _.lowerCase(req.params.postName);
+//     arr.forEach(function(element) {
+//         if(requestTitle === _.lowerCase(element.titleInfo)){
+//             res.render('specific', {titleInfo: element.titleInfo, pageInfo: element.pageInfo});
+
+//         }
+//     })
+// })
+
+// app.post('/', (req, res) => {
+//     var searchResult = req.body.srch;
+//     var j = 0;
+//     globalArr.forEach(function(element) {
+//         if(searchResult === element.personName){
+//             console.log(searchResult);
+//             res.render('personal-blog', {globalarr: element, i: j});
+//         }
+//         else{
+//             res.redirect('/');
+//         }
+//         j++;
+//     })
+// })
+
+
+// app.get('/logto', (req, res) => {
+//     res.render('person-home');
+// })
+
+// app.post('/logto', (req, res) => {
+//     id = req.body.loginfo;
+//     name = req.body.name;
+//     res.redirect('/compose');
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <% for(var i=(globalarr.length)-1; i >= 0; i--) { %>
+        <% for(var j=0; j < globalarr[i].arr.length; j++) { %>
+            <div class="personalContainer">
+                <% var l = globalarr[i].arr.link %>
+                <h1> <%= globalarr[i].arr[j].titleInfo %> </h1>
+                <p> <%= globalarr[i].arr[j].pageInfo %> </p>
+                <p class="name">by- <%= globalarr[i].personName %> </p>
+            </div>
+        <% } %>
+    
+    <% } %>
+
+
+<% if(globalarr.length >= 1){ %>
+    <form action="/delete" method="POST">
+        <button type="submit" class="dt">Delete</button>
+    </form>
+<% } %> -->
+
+
+
+
+
+
+        <% console.log(globalarr.arr.length) %>
+        <% for(var j=0; j < globalarr.arr.length; j++) { %>
+            <div class="personalContainer">
+                <h1> <%= globalarr.arr[j].titleInfo %> </h1>
+                <p> <%= globalarr.arr[j].pageInfo %> </p>
+            </div>
+        <% } %>
+    
+
+
+
+<% if(globalarr.length >= 1){ %>
+    <form action="/delete" method="POST">
+        <button type="submit" class="dt">Delete</button>
+    </form>
+<% } %>

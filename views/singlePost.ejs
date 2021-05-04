@@ -1,0 +1,13 @@
+<%- include('partials/header') -%>
+<body class="about-body">
+    <div>
+        <% for(var i=0; i < arr.length; i++){ %>
+            <% if(arr[i].Content.Title === match){ %>
+                <div class="personalContainer">
+                    <h1> <%= arr[i].Content.Title %> </h1>
+                    <p> <%= arr[i].Content.Post %> </p>
+                </div>
+            <% } %>
+        <% } %>
+    </div>    
+</body>
